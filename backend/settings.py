@@ -9,7 +9,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-mzr-r!@9%tq2b^8w#w72k35#l2y96^-0gqrs0kly+t6%3h^w%j'
 
 
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -23,12 +24,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    'corsheaders',
+    'rest_framework', #DRF
+    'api.apps.ApiConfig', #app
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # ← обязательно 
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
+    'corsheaders.middleware.CorsMiddleware',#server для django react перед CommonMiddleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -117,3 +124,17 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 ###################
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    
+    'http://localhost:5173',
+    'http://127.0.0.1:8001',
+
+]
+
+
+######################################
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+######################################
