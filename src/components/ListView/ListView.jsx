@@ -6,7 +6,8 @@ function Home(){
     const[projects, setProjects] = useState([]);
 
     useEffect(()=>{
-        fetch('http://127.0.0.1:8001/api/projects/')
+        fetch('https://jenyatarasenko.pythonanywhere.com/api/projects/')
+        // fetch('http://127.0.0.1:8001/api/projects/')
         .then(res => res.json())
         .then(data => setProjects(data))
         .catch(err => console.error(err))
