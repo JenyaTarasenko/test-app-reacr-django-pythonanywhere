@@ -129,7 +129,8 @@ INTERNAL_IPS = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    'JenyaTarasenko.pythonanywhere.com',# react га сервере
+    
+    "https://jenyatarasenko.pythonanywhere.com",# React
     'http://localhost:5173',
     'http://127.0.0.1:8001',
 
