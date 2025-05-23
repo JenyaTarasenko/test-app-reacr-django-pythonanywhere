@@ -3,15 +3,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Project
 from .serializers import ProjectSerializer
-
-# обязвательно должна быть view чтобы подхватывала после сборки 
-# urlpatterns += [
-#     re_path(r'^.*$', TemplateView.as_view(template_name='index.html')),
-# ]
-# def index(request):
-#     return render(request, 'index.html')
+from django.shortcuts import get_object_or_404
 
 
+# все проекты   
 class ProjectListAPIViev(APIView):
     
     def get(self, request):
@@ -24,3 +19,13 @@ class ProjectListAPIViev(APIView):
         if obj.image and request:
             return request.build_absolute_uri(obj.image.url)
         return None
+    
+class ProjectDetailView(APIView):
+    
+    def get(self, request, slug):
+        project = get_object_or_404(Project, slug=slug)
+        serializer =  ProjectSerializer(project, context={'request': request})
+        return Response(serializer.data)
+        
+  
+    
