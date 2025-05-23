@@ -17,7 +17,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     'JenyaTarasenko.pythonanywhere.com',
-    ]
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
